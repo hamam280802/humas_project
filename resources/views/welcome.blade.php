@@ -9,49 +9,47 @@
 <body class="bg-gray-100 text-gray-800 font-poppins">
 
     <!-- Navbar -->
-    <nav class="bg-white shadow p-4">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <nav class="bg-white shadow-md p-4">
+        <div class="mx-auto flex justify-between items-center">
             <div class="text-xl font-bold">Monitoring Humas</div>
-            <ul class="flex space-x-6">
-                <li><a href="/" class="hover:text-blue-600 font-semibold">Beranda</a></li>
+            <ul class="flex space-x-12">
+                <li><a href="/" class="hover:text-blue-600 hover:font-semibold">Beranda</a></li>
 
                 <!-- Dokumen Dropdown -->
                 <li class="relative group">
-                    <button class="hover:text-blue-600 font-semibold">Dokumen</button>
-                    <ul class="absolute left-0 mt-2 w-40 bg-white shadow-md rounded-md hidden group-hover:block z-10">
-                        <li><a href="#" class="block px-4 py-2 font-semibold hover:bg-gray-100">Kepala</a></li>
-                        <li><a href="#" class="block px-4 py-2 font-semibold hover:bg-gray-100">Statistik</a></li>
-                        <li><a href="#" class="block px-4 py-2 font-semibold hover:bg-gray-100">Internal</a></li>
+                    <button class="hover:text-blue-600 hover:font-semibold">Dokumen</button>
+                    <ul class="absolute -left-9 top-full mt-2 w-96 bg-white shadow-lg hidden z-10 space-y-4 p-6">
+                        <li class="px-4"><a href="#" class="block font-semibold hover:text-blue-600">Kepala</a><div class="text-gray-500 text-sm mt-1">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, perferendis.</div></li>
+                        <li class="px-4"><a href="#" class="block font-semibold hover:text-blue-600">Statistik</a><div class="text-gray-500 text-sm mt-1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Hic, officia.</div></li>
+                        <li class="px-4"><a href="#" class="block font-semibold hover:text-blue-600">Internal</a><div class="text-gray-500 text-sm mt-1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque, repudiandae!</div></li>
                     </ul>
                 </li>
 
                 <!-- Projek Dropdown -->
                 <li class="relative group">
-                    <button class="hover:text-blue-600 font-semibold">Projek</button>
-                    <ul class="absolute left-0 mt-2 w-40 bg-white shadow-md rounded-md hidden group-hover:block z-10">
-                        <li><a href="#" class="block px-4 py-2 font-semibold hover:bg-gray-100">Humas</a></li>
-                        <li><a href="#" class="block px-4 py-2 font-semibold hover:bg-gray-100">Progres</a></li>
+                    <button class="hover:text-blue-600 hover:font-semibold">Projek</button>
+                    <ul class="absolute -left-9 top-full mt-2 w-96 bg-white shadow-md hidden z-10 space-y-4 p-6">
+                        <li class="px-4"><a href="#" class="block font-semibold hover:text-blue-600">Humas</a><div class="text-gray-500 text-sm mt-1">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatibus, sed.</div></li>
+                        <li class="px-4"><a href="#" class="block font-semibold hover:text-blue-600">Progres</a><div class="text-gray-500 text-sm mt-1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Consectetur, inventore.</div></li>
                     </ul>
                 </li>
 
-                <li><a href="#" class="hover:text-blue-600 font-semibold">Collabs</a></li>
-                <li><a href="#" class="hover:text-blue-600 font-semibold">Laporan</a></li>
-                <li>
-                @if (Route::has('login'))
-                    <div>
-                        @auth
-                            <a href="{{ url('/dashboard') }}" class="hover:text-blue-600 font-semibold focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
-                        @else
-                            <a href="{{ route('login') }}" class="hover:text-blue-600 font-semibold focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
-
-                            @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="ml-4 hover:text-blue-600 font-semibold focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                            @endif
-                        @endauth
-                    </div>
-                @endif
-                </li>
+                <li><a href="#" class="hover:text-blue-600 hover:font-semibold">Collabs</a></li>
+                <li><a href="#" class="hover:text-blue-600 hover:font-semibold">Laporan</a></li>
             </ul>
+            @if (Route::has('login'))
+                <div>
+                    @auth
+                        <a href="{{ url('/dashboard') }}" class="hover:text-blue-600 hover:font-semibold">Dashboard</a>
+                    @else
+                        <a href="{{ route('login') }}" class="hover:text-blue-600 hover:font-semibold">Log in</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}" class="ml-4 hover:text-blue-600 hover:font-semibold">Register</a>
+                        @endif
+                    @endauth
+                </div>
+            @endif
         </div>
     </nav>
 
@@ -61,5 +59,35 @@
         <p class="text-gray-700">Gunakan navigasi di atas untuk mengakses dokumentasi, progres projek, dan laporan kegiatan.</p>
     </main>
 
+    <footer class="bg-gray-100 absolute bottom-0 w-full">
+        <div class="bg-gray-800 text-white p-4 text-center">
+            <p>&copy; 2025 Monitoring Humas. All rights reserved.</p>
+        </div>
+        <div class="bg-gray-700 text-white p-4 text-center">
+            <p>Developed by Tim HUMAS with &#10084;</p>
+        </div>
+    </footer>
 </body>
 </html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const dropdowns = document.querySelectorAll('.relative.group');
+
+        dropdowns.forEach(dropdown => {
+            const button = dropdown.querySelector('button');
+            const menu = dropdown.querySelector('ul');
+
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                menu.classList.toggle('hidden');
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!dropdown.contains(e.target)) {
+                    menu.classList.add('hidden');
+                }
+            });
+        });
+    });
+</script>
