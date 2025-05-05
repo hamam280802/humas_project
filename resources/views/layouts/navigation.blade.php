@@ -18,6 +18,67 @@
                 </div>
             </div>
 
+            <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <x-dropdown align="left" width="48">
+                    <x-slot name="trigger">
+                    <button class="inline-flex items-center text-sm px-3 py-2 border border-transparent leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                        Dokumen
+                    </button>
+                    </x-slot>
+
+                    <x-slot name="content">
+                        <div class="px-4 py-2 hover:bg-gray-100 cursor-pointer rounded-md">
+                            <a href="{{ route('headoffice', ['tim_fungsi' => 'Kepala']) }}" class="text-sm block font-semibold text-gray-700 hover:text-blue-600">KANTI</a>
+                            <div class="text-gray-500 text-sm mt-1">Kumpulan Dokumentasi Pak Mukti&#128513;</div>
+                        </div>
+
+                        <div class="px-4 py-2 hover:bg-gray-100 cursor-pointer rounded-md">
+                            <a href="{{ route('statoffice', ['tim_fungsi' => implode(',', ['Distribusi','Sosial','Pertanian','Produksi','Umum'])]) }}" class="text-sm block font-semibold text-gray-700 hover:text-blue-600">BEDENTIK</a>
+                            <div class="text-gray-500 text-sm mt-1">Berbagai Dokumentasi Penting Statistik</div>
+                        </div>
+
+                        <div class="px-4 py-2 hover:bg-gray-100 cursor-pointer rounded-md">
+                            <a href="{{ route('headoffice', ['tim_fungsi' => 'Humas']) }}" class="text-sm block font-semibold text-gray-700 hover:text-blue-600">KAGEK</a>
+                            <div class="text-gray-500 text-sm mt-1">Kumpulan Gambar dan Video Kita</div>
+                        </div>
+                    </x-slot>
+                </x-dropdown>
+            </div>
+
+            <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <x-dropdown align="left" width="48">
+                    <x-slot name="trigger">
+                    <button class="inline-flex items-center text-sm px-3 py-2 border border-transparent leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
+                        Projek
+                    </button>
+                    </x-slot>
+
+                    <x-slot name="content">
+                        <div class="px-4 py-2 hover:bg-gray-100 cursor-pointer rounded-md">
+                            <a href="#" class="text-sm block font-semibold text-gray-700 hover:text-blue-600">SEKECO</a>
+                            <div class="text-gray-500 text-sm mt-1">Sentra Kreatif Komunikasi</div>
+                        </div>
+
+                        <div class="px-4 py-2 hover:bg-gray-100 cursor-pointer rounded-md">
+                            <a href="#" class="text-sm block font-semibold text-gray-700 hover:text-blue-600">DAK KATEK</a>
+                            <div class="text-gray-500 text-sm mt-1">Dashboard Kinerja Teknis</div>
+                        </div>
+                    </x-slot>
+                </x-dropdown>
+            </div>
+
+            <div class="hidden sm:flex sm:items-center sm:px-4 sm:text-gray-500 sm:font-medium sm:hover:text-gray-700">
+                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('collabs')">
+                    {{ __('Collabs') }}
+                </x-nav-link>
+            </div>
+            <div class="hidden sm:flex sm:items-center sm:px-4 sm:text-gray-500 sm:font-medium sm:hover:text-gray-700">
+                <x-nav-link :href="route('dashboard')" :active="request()->routeIs('laporan')">
+                    {{ __('Laporan') }}
+                </x-nav-link>
+            </div>
+            
+
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
@@ -71,6 +132,53 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
+
+        <!-- Dropdown Dokumen - Responsive Version -->
+        <div class="px-4 py-2">
+            <div class="font-semibold text-gray-700 text-sm mb-2">Dokumen</div>
+
+            <a href="{{ route('headoffice') }}" class="block text-gray-700 hover:text-blue-600 text-sm font-semibold">
+                KANTI
+            </a>
+            <div class="text-gray-500 text-xs mb-2">Kumpulan Dokumentasi Pak Mukti 😁</div>
+
+            <a href="{{ route('statoffice') }}" class="block text-gray-700 hover:text-blue-600 text-sm font-semibold">
+                BEDENTIK
+            </a>
+            <div class="text-gray-500 text-xs mb-2">Berbagai Dokumentasi Penting Statistik</div>
+
+            <a href="#" class="block text-gray-700 hover:text-blue-600 text-sm font-semibold">
+                KAGEK
+            </a>
+            <div class="text-gray-500 text-xs">Kumpulan Gambar dan Video Kita</div>
+        </div>
+
+        <!-- Dropdown Projek - Responsive Version -->
+        <div class="px-4 py-2 mt-4">
+            <div class="font-semibold text-gray-700 text-sm mb-2">Projek</div>
+
+            <a href="#" class="block text-gray-700 hover:text-blue-600 text-sm font-semibold">
+                SEKECO
+            </a>
+            <div class="text-gray-500 text-xs mb-2">Sentra Kreatif Komunikasi</div>
+
+            <a href="#" class="block text-gray-700 hover:text-blue-600 text-sm font-semibold">
+                DAK KATEK
+            </a>
+            <div class="text-gray-500 text-xs">Dashboard Kinerja Teknis</div>
+        </div>
+
+        <!-- Collabs & Laporan -->
+        <div class="mt-4 space-y-1">
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('collabs')">
+                {{ __('Collabs') }}
+            </x-responsive-nav-link>
+
+            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('laporan')">
+                {{ __('Laporan') }}
+            </x-responsive-nav-link>
+        </div>
+
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
